@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  async mounted() {
+  async created() {
     await this.$store.dispatch("getUsers");
   },
 };

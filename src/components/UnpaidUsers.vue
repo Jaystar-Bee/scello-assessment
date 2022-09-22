@@ -10,18 +10,18 @@ export default {
     TableView,
   },
   computed: {
-    ...mapGetters(["users"]),
+    ...mapGetters(["unpaidUsers"]),
     users() {
-      return this.$store.getters.users;
+      return this.$store.getters.unpaidUsers;
     },
   },
   mounted() {
-    this.$store.getters.users;
-    // console.log(this.users);
+    // this.$store.getters.users;
+    console.log(this.unpaidUsers);
   },
   provide() {
     return {
-      users: this.users,
+      users: this.unpaidUsers,
     };
   },
 };

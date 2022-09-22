@@ -41,7 +41,7 @@
       <h4 class="font-semibold mb-2">{{ fullName }}</h4>
       <p class="text-primary-variant text-sm">{{ user.email }}</p>
     </td>
-    <td class="py-2">
+    <td class="py-4">
       <div
         class="
           bg-light-purple
@@ -55,15 +55,21 @@
           mb-2
           max-w-fit
         "
-        :class="user.userStatus === 'inactive' && 'bg-body-color'"
+        :class="
+          user.userStatus === 'inactive' ? 'bg-body-color bg-opacity-50' : ''
+        "
       >
         <div
           class="w-2 h-2 rounded-full bg-primary"
-          :class="user.userStatus === 'inactive' && 'bg-primary-variant'"
+          :class="user.userStatus === 'inactive' ? 'bg-primary-variant' : ''"
         ></div>
         <p
-          class="text-primary font-semibold"
-          :class="user.userStatus === 'inactive' && 'text-primary-variant'"
+          class="font-semibold"
+          :class="
+            user.userStatus === 'inactive'
+              ? 'text-primary-variant'
+              : 'text-primary'
+          "
         >
           {{ user.userStatus === "inactive" ? "Inactive" : "Active" }}
         </p>
@@ -84,15 +90,50 @@
           max-w-fit
           mb-2
         "
+        :class="
+          user.paymentStatus === 'overdue'
+            ? 'bg-light-red'
+            : user.paymentStatus === 'unpaid'
+            ? 'bg-light-yellow'
+            : ''
+        "
       >
-        <div class="w-2 h-2 rounded-full bg-green"></div>
-        <p class="text-green font-semibold">Paid</p>
+        <div
+          class="w-2 h-2 rounded-full bg-green"
+          :class="
+            user.paymentStatus === 'overdue'
+              ? 'bg-red'
+              : user.paymentStatus === 'unpaid'
+              ? 'bg-yellow'
+              : ''
+          "
+        ></div>
+        <p
+          class="text-green font-semibold"
+          :class="
+            user.paymentStatus === 'overdue'
+              ? 'text-red'
+              : user.paymentStatus === 'unpaid'
+              ? 'text-yellow'
+              : ''
+          "
+        >
+          {{
+            user.paymentStatus === "overdue"
+              ? "Overdue"
+              : user.paymentStatus === "unpaid"
+              ? "Unpaid"
+              : "Paid"
+          }}
+        </p>
       </div>
       <p class="text-xs font-semibold">Paid on {{ getDate(user.paidOn) }}</p>
     </td>
     <td>
       <div>
-        <h3 class="font-semibold">$200</h3>
+        <h3 class="font-semibold">
+          ${{ (user.amountInCents / 100).toFixed(2) }}
+        </h3>
         <p class="text-xs text-primary">USD</p>
       </div>
     </td>

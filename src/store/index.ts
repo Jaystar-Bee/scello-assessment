@@ -8,6 +8,7 @@ export default createStore({
     paidUsers: [],
     unpaidUsers: [],
     overdueUsers: [],
+    totalToPay: 0,
   },
   getters: {
     users(state) {
@@ -21,6 +22,9 @@ export default createStore({
     },
     overdueUsers(state) {
       return state.overdueUsers;
+    },
+    totalToPay(state) {
+      return state.totalToPay;
     },
   },
   mutations: {
@@ -45,6 +49,24 @@ export default createStore({
       );
       state.overdueUsers = newArr;
     },
+    setTotalToPay(state, payload) {
+      console.log(payload);
+      // let;
+      const unpaidSum = payload.reduce((acc: number, user: any) => {
+        if (user.paymentStatus === "!unpaid") {
+          return;
+        }
+        return acc + user.amountInCents;
+      }, 0);
+      const overdueSum = payload.reduce((acc: number, user: any) => {
+        if (user.paymentStatus === "!overdue") {
+          return;
+        }
+        return acc + user.amountInCents;
+      }, 0);
+      const amountToPay = (unpaidSum + overdueSum) / 100;
+      state.totalToPay = amountToPay;
+    },
   },
   actions: {
     async getUsers(context: any) {
@@ -55,6 +77,7 @@ export default createStore({
         context.commit("setUnpaidUsers", res.data);
         context.commit("setPaidUsers", res.data);
         context.commit("setOverdueUsers", res.data);
+        context.commit("setTotalToPay", res.data.data);
       } catch (error) {
         console.log(error);
       }

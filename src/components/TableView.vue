@@ -31,8 +31,12 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <user-overview v-for="user in users" :key="user.id" :user="user"></user-overview>
+      <tbody v-if="users">
+        <user-overview
+          v-for="user in users"
+          :key="user.id"
+          :user="user"
+        ></user-overview>
       </tbody>
     </table>
   </div>
@@ -41,12 +45,9 @@
 <script>
 import UserOverview from "@/components/UserOverview.vue";
 export default {
-  inject: ["users"],
+  inject: ["users", "activeComponent"],
   components: {
     UserOverview,
-  },
-  mounted() {
-    console.log(this.users);
   },
 };
 </script>

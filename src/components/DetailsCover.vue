@@ -2,7 +2,7 @@
   <div class="card rounded-lg container mx-auto">
     <div>
       <filter-bar class="border-b border-body-color"></filter-bar>
-      <all-user></all-user>
+      <component :is="activeComponent"></component>
     </div>
   </div>
 </template>
@@ -10,10 +10,14 @@
 <script>
 import FilterBar from "@/components/FilterBar.vue";
 import AllUser from "./AllUser.vue";
+import PaidUsers from "./PaidUsers.vue";
 export default {
+  props: ["activeComponent"],
+
   components: {
     FilterBar,
     AllUser,
+    PaidUsers,
   },
 };
 </script>
