@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  async mounted() {
+    await this.$store.dispatch("getUsers");
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: "Inter", sans-serif;

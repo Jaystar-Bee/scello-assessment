@@ -2,18 +2,18 @@
   <div class="card rounded-lg container mx-auto">
     <div>
       <filter-bar class="border-b border-body-color"></filter-bar>
-      <table-view></table-view>
+      <all-user></all-user>
     </div>
   </div>
 </template>
 
 <script>
 import FilterBar from "@/components/FilterBar.vue";
-import TableView from "./TableView.vue";
+import AllUser from "./AllUser.vue";
 export default {
   components: {
     FilterBar,
-    TableView,
+    AllUser,
   },
 };
 </script>

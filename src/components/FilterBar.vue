@@ -13,7 +13,7 @@
   >
     <div
       v-if="filterIsVisible"
-      class="absolute bg-white px-3 py-3 top-20 shadow-sm rounded-md"
+      class="absolute bg-white px-3 py-3 top-16 shadow-sm rounded-md z-10"
     >
       <div class="border-b border-gray-100">
         <h5 class="uppercase text-gray-500 mb-3">sort By:</h5>
