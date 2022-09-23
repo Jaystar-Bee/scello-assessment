@@ -76,7 +76,6 @@ export default createStore({
     async getUsers(context: any) {
       try {
         const res = await axios.get(`users/${myId}`);
-        console.log(res);
         context.commit("setUsers", res.data);
         context.commit("setUnpaidUsers", res.data);
         context.commit("setPaidUsers", res.data);

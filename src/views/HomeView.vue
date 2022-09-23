@@ -54,7 +54,6 @@ export default {
       }
     },
     checkedUser(id) {
-      console.log(id);
       this.userToChange = id;
     },
   },
