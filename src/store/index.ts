@@ -145,6 +145,9 @@ export default createStore({
       }
     },
     async userHasPaid(context, userId) {
+      if (!userId) {
+        return;
+      }
       try {
         await axios.patch(`mark-paid/${userId}`);
         alert("User altered to paid successfully!");
