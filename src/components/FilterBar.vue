@@ -30,7 +30,12 @@
             "
           >
             <label class="flex-1" for="default">default</label>
-            <input type="radio" name="filter" id="default" />
+            <input
+              type="radio"
+              name="filter"
+              id="default"
+              @click="sortUser($event)"
+            />
           </li>
           <li
             class="
@@ -63,7 +68,12 @@
             "
           >
             <label for="lastName">Last Name</label>
-            <input type="radio" name="filter" id="lastName" />
+            <input
+              type="radio"
+              name="filter"
+              id="lastName"
+              @click="sortUser($event)"
+            />
           </li>
           <li
             class="
@@ -91,7 +101,12 @@
             "
           >
             <label for="lastLogin">Last Login</label>
-            <input type="radio" name="filter" id="lastLogin" />
+            <input
+              type="radio"
+              name="filter"
+              id="lastLogin"
+              @click="sortUser($event)"
+            />
           </li>
         </ul>
       </div>
@@ -178,6 +193,9 @@
             py-2
             px-6
           "
+          v-model="search"
+          @input="filterUser"
+          @change="filterUser"
           placeholder="Search user by Name, Email or Date"
         />
       </div>
@@ -195,6 +213,7 @@ export default {
   data() {
     return {
       filterIsVisible: false,
+      search: "",
     };
   },
 
@@ -204,8 +223,10 @@ export default {
     },
     sortUser(e) {
       const id = e.target.id;
-      // console.log(id);
-      // this.$store.dispatch("sortUser", { id });
+      this.$store.dispatch("sortUser", { id });
+    },
+    filterUser() {
+      this.$store.dispatch("filterUser", this.search);
     },
   },
 };

@@ -5,6 +5,7 @@ const myId = "uSjHbl7tYiTDhIx";
 export default createStore({
   state: {
     users: [],
+    searchUser: [],
     paidUsers: [],
     unpaidUsers: [],
     overdueUsers: [],
@@ -12,7 +13,11 @@ export default createStore({
   },
   getters: {
     users(state) {
-      return state.users;
+      if (state.searchUser.length > 0) {
+        return state.searchUser;
+      } else {
+        return state.users;
+      }
     },
     paidUsers(state) {
       return state.paidUsers;
@@ -50,8 +55,6 @@ export default createStore({
       state.overdueUsers = newArr;
     },
     setTotalToPay(state, payload) {
-      console.log(payload);
-      // let;
       const unpaidSum = payload.reduce((acc: number, user: any) => {
         if (user.paymentStatus === "!unpaid") {
           return;
@@ -102,12 +105,34 @@ export default createStore({
         alert(error.message);
       }
     },
-    // sortUser(context, payload) {
-    //   const users = context.state.users;
-    //   const name: string = payload.id;
-
-    //   users.sort((a, b) => a.firstName - b.name);
-    // },
+    sortUser(context, payload) {
+      const users = context.state.users;
+      const name = payload.id;
+      if (name === "firstName") {
+        users.sort((a: any, b: any) =>
+          a.firstName > b.firstName ? 1 : b.firstName > a.firstName ? -1 : 0
+        );
+      } else if (name === "lastName") {
+        users.sort((a: any, b: any) =>
+          a.lastName > b.lastName ? 1 : b.lastName > a.lastName ? -1 : 0
+        );
+      } else if (name === "default") {
+        context.dispatch("getUsers");
+      }
+    },
+    filterUser(context, text) {
+      if (text !== "") {
+        console.log(text);
+        let users = context.state.users;
+        users = users.filter(
+          (user: any) =>
+            user.firstName.includes(text) ||
+            user.lastName.includes(text) ||
+            user.email.includes(text)
+        );
+        context.state.searchUser = users;
+      }
+    },
   },
   // modules: {}
 });

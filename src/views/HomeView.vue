@@ -40,15 +40,9 @@ export default {
   },
   methods: {
     changeComponent(comp) {
-      console.log(comp);
       this.activeComponent = comp;
     },
   },
-  // provide() {
-  //   return {
-  //     activeComponent: this.activeComponent,
-  //   };
-  // },
 };
 </script>
 

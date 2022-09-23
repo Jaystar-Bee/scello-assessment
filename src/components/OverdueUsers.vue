@@ -1,5 +1,5 @@
 <template>
-  <table-view></table-view>
+  <table-view :users="users"></table-view>
 </template>
 
 <script>
@@ -10,18 +10,9 @@ export default {
     TableView,
   },
   computed: {
-    overdueUsers() {
+    users() {
       return this.$store.getters.overdueUsers;
     },
-  },
-  mounted() {
-    // this.$store.getters.users;
-    // console.log(this.overdueUsers);
-  },
-  provide() {
-    return {
-      users: this.overdueUsers,
-    };
   },
 };
 </script>
