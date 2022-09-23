@@ -13,7 +13,7 @@
   >
     <div class="flex space-x-2 mr-10 items-center">
       <p>Row per page:</p>
-      <select name="pageNum" id="page" class="bg-transparent">
+      <select name="pageNum" id="page" class="bg-transparent outline-none">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="15">15</option>

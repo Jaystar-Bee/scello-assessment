@@ -40,6 +40,7 @@ export default createStore({
       const newArr = payload.data.filter(
         (user: any) => user.paymentStatus == "unpaid"
       );
+
       state.unpaidUsers = newArr;
     },
     setPaidUsers(state, payload) {
@@ -130,8 +131,18 @@ export default createStore({
             user.email.includes(text)
         );
         context.state.searchUser = users;
+        context.commit("setUnpaidUsers", { data: context.state.searchUser });
+        context.commit("setPaidUsers", { data: context.state.searchUser });
+        context.commit("setOverdueUsers", { data: context.state.searchUser });
       } else {
         context.state.searchUser = context.state.users;
+        context.commit("setUnpaidUsers", { data: context.state.users });
+        context.commit("setPaidUsers", {
+          data: context.state.searchUser,
+        });
+        context.commit("setOverdueUsers", {
+          data: context.state.searchUser,
+        });
       }
     },
   },
