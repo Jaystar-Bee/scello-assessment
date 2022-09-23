@@ -56,18 +56,18 @@ export default createStore({
       state.overdueUsers = newArr;
     },
     setTotalToPay(state, payload) {
-      const unpaidSum = payload.reduce((acc: number, user: any) => {
-        if (user.paymentStatus === "!unpaid") {
-          return;
+      let unpaidSum = 0;
+      let overdueSum = 0;
+      payload.forEach((user: any) => {
+        if (user.paymentStatus === "unpaid") {
+          unpaidSum += user.amountInCents;
         }
-        return acc + user.amountInCents;
-      }, 0);
-      const overdueSum = payload.reduce((acc: number, user: any) => {
-        if (user.paymentStatus === "!overdue") {
-          return;
+      });
+      payload.forEach((user: any) => {
+        if (user.paymentStatus === "overdue") {
+          overdueSum += user.amountInCents;
         }
-        return acc + user.amountInCents;
-      }, 0);
+      });
       const amountToPay = (unpaidSum + overdueSum) / 100;
       state.totalToPay = amountToPay;
     },
