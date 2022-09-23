@@ -39,15 +39,18 @@
         ></user-overview>
       </tbody>
     </table>
+    <the-footer></the-footer>
   </div>
 </template>
 
 <script>
 import UserOverview from "@/components/UserOverview.vue";
+import TheFooter from "@/components/TheFooter.vue";
 export default {
   props: ["users"],
   components: {
     UserOverview,
+    TheFooter,
   },
 };
 </script>
