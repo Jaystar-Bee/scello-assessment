@@ -1,5 +1,5 @@
 <template>
-  <table-view></table-view>
+  <table-view :unpaidUsers="users"></table-view>
 </template>
 
 <script>

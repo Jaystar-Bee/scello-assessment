@@ -174,12 +174,14 @@
             />
           </div>
           <div class="mb-2 border-b border-gray-300 pb-3">
-            <p>Edit</p>
-            <p>View Profile</p>
-            <p class="text-green">Activate User</p>
+            <p class="cursor-pointer">Edit</p>
+            <p class="cursor-pointer">View Profile</p>
+            <p class="text-green cursor-pointer" @click="activateUser">
+              Activate User
+            </p>
           </div>
           <div>
-            <p class="text-red">Delete</p>
+            <p class="text-red cursor-pointer" @click="deleteUSer">Delete</p>
           </div>
         </div>
         <!---Edit MOdal ends----->
@@ -282,6 +284,16 @@ export default {
       ];
 
       return `${dateArr[2]}/${months[dateArr[1] - 1]}/${dateArr[0]}`;
+    },
+    activateUser() {
+      if (this.user.userStatus == "active") {
+        alert("user already activated");
+        return;
+      }
+      this.$store.dispatch("activateUser", this.user.id);
+    },
+    deleteUser() {
+      this.$store.dispatch("deleteUser", this.user.id);
     },
   },
 };

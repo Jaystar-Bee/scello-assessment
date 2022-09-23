@@ -45,6 +45,7 @@
 <script>
 import UserOverview from "@/components/UserOverview.vue";
 export default {
+  // props: ["users", "paidUsers", "unpaidUsers", "overdueUsers"],
   inject: ["users", "activeComponent"],
   components: {
     UserOverview,

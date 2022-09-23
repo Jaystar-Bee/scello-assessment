@@ -10,8 +10,7 @@ export default {
     TableView,
   },
   computed: {
-    ...mapGetters(["paidUsers"]),
-    users() {
+    paidUsers() {
       return this.$store.getters.paidUsers;
     },
   },

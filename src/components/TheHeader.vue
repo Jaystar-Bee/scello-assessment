@@ -5,25 +5,45 @@
       <!--Navbar--->
       <ul class="flex items-center">
         <li
-          class="border-b-2 border-primary-variant px-3 cursor-pointer"
+          class="border-b-2 px-3 cursor-pointer"
+          :class="
+            activeComponent === 'all-user'
+              ? 'border-primary-variant'
+              : 'border-transparent'
+          "
           @click="$emit('changeComponent', 'all-user')"
         >
           All
         </li>
         <li
-          class="border-b-2 border-transparent px-3 cursor-pointer"
+          class="border-b-2 px-3 cursor-pointer"
+          :class="
+            activeComponent === 'paid-users'
+              ? 'border-primary-variant'
+              : 'border-transparent'
+          "
           @click="$emit('changeComponent', 'paid-users')"
         >
           Paid
         </li>
         <li
-          class="border-b-2 border-transparent px-3 cursor-pointer"
+          class="border-b-2 px-3 cursor-pointer"
+          :class="
+            activeComponent === 'unpaid-users'
+              ? 'border-primary-variant'
+              : 'border-transparent'
+          "
           @click="$emit('changeComponent', 'unpaid-users')"
         >
           Unpaid
         </li>
         <li
-          class="border-b-2 border-transparent px-3 cursor-pointer"
+          class="border-b-2 px-3 cursor-pointer"
+          :class="
+            activeComponent === 'overdue-users'
+              ? 'border-primary-variant'
+              : 'border-transparent'
+          "
           @click="$emit('changeComponent', 'overdue-users')"
         >
           Overdue
@@ -42,6 +62,7 @@
 </template>
 <script>
 export default {
+  props: ["activeComponent"],
   computed: {
     amountToPay() {
       return this.$store.getters.totalToPay;

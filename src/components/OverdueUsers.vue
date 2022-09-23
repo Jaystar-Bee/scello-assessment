@@ -4,14 +4,13 @@
 
 <script>
 import TableView from "./TableView.vue";
-import { mapGetters } from "vuex";
+
 export default {
   components: {
     TableView,
   },
   computed: {
-    ...mapGetters(["overdueUsers"]),
-    users() {
+    overdueUsers() {
       return this.$store.getters.overdueUsers;
     },
   },

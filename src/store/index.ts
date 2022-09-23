@@ -82,6 +82,26 @@ export default createStore({
         console.log(error);
       }
     },
+    async activateUser(context, payload) {
+      try {
+        await axios.patch(`activate-user/${payload}`);
+        alert("User Activated");
+        context.dispatch("getUsers");
+      } catch (error: any) {
+        console.log(error);
+        alert(error.message);
+      }
+    },
+    async deleteUser(context, payload) {
+      try {
+        await axios.patch(`remove-user/${payload}`);
+        alert("User Activated");
+        context.dispatch("getUsers");
+      } catch (error: any) {
+        console.log(error);
+        alert(error.message);
+      }
+    },
   },
   // modules: {}
 });

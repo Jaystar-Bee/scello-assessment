@@ -1,7 +1,10 @@
 <template>
   <div>
     <header class="mb-10">
-      <the-header @changeComponent="changeComponent"></the-header>
+      <the-header
+        @changeComponent="changeComponent"
+        :activeComponent="activeComponent"
+      ></the-header>
     </header>
     <div class="card rounded-lg container mx-auto">
       <div>
@@ -41,6 +44,11 @@ export default {
       this.activeComponent = comp;
     },
   },
+  // provide() {
+  //   return {
+  //     activeComponent: this.activeComponent,
+  //   };
+  // },
 };
 </script>
 
