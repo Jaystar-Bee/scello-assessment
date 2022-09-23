@@ -195,7 +195,7 @@
           "
           v-model="search"
           @input="filterUser"
-          @change="filterUser"
+          @blur="filterUser"
           placeholder="Search user by Name, Email or Date"
         />
       </div>

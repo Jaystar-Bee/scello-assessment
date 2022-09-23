@@ -181,7 +181,7 @@
             </p>
           </div>
           <div>
-            <p class="text-red cursor-pointer" @click="deleteUSer">Delete</p>
+            <p class="text-red cursor-pointer" @click="deleteUser">Delete</p>
           </div>
         </div>
         <!---Edit MOdal ends----->

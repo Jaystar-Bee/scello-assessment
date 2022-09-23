@@ -97,8 +97,8 @@ export default createStore({
     },
     async deleteUser(context, payload) {
       try {
-        await axios.patch(`remove-user/${payload}`);
-        alert("User Activated");
+        await axios.delete(`remove-user/${payload}`);
+        alert("User Deleted");
         context.dispatch("getUsers");
       } catch (error: any) {
         console.log(error);
@@ -122,7 +122,6 @@ export default createStore({
     },
     filterUser(context, text) {
       if (text !== "") {
-        console.log(text);
         let users = context.state.users;
         users = users.filter(
           (user: any) =>
@@ -131,6 +130,8 @@ export default createStore({
             user.email.includes(text)
         );
         context.state.searchUser = users;
+      } else {
+        context.state.searchUser = context.state.users;
       }
     },
   },
