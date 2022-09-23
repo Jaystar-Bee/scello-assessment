@@ -4,7 +4,7 @@ const myId = "uSjHbl7tYiTDhIx";
 
 export default createStore({
   state: {
-    users: null,
+    users: [],
     paidUsers: [],
     unpaidUsers: [],
     overdueUsers: [],
@@ -102,6 +102,12 @@ export default createStore({
         alert(error.message);
       }
     },
+    // sortUser(context, payload) {
+    //   const users = context.state.users;
+    //   const name: string = payload.id;
+
+    //   users.sort((a, b) => a.firstName - b.name);
+    // },
   },
   // modules: {}
 });

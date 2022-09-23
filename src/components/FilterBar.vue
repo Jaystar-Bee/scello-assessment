@@ -44,7 +44,12 @@
             "
           >
             <label class="" for="firstName">First Name</label>
-            <input type="radio" name="filter" id="firstName" />
+            <input
+              type="radio"
+              name="filter"
+              id="firstName"
+              @click="sortUser($event)"
+            />
           </li>
           <li
             class="
@@ -119,7 +124,12 @@
             "
           >
             <label for="activeUser">Active</label>
-            <input type="radio" name="filter" id="activeUser" />
+            <input
+              type="radio"
+              name="filter"
+              id="activeUser"
+              @change="searchUser"
+            />
           </li>
           <li
             class="
@@ -191,6 +201,11 @@ export default {
   methods: {
     toggleFilter() {
       this.filterIsVisible = !this.filterIsVisible;
+    },
+    sortUser(e) {
+      const id = e.target.id;
+      // console.log(id);
+      // this.$store.dispatch("sortUser", { id });
     },
   },
 };
