@@ -5,8 +5,14 @@
     :class="detailIsVisible ? 'border-l-4 border-l-primary' : ''"
   >
     <td class="py-4 pl-3">
-      <input type="checkbox" id="check" class="hidden" />
-      <label for="check">
+      <input
+        type="radio"
+        :id="user.id"
+        name="userRadio"
+        class="hidden"
+        @change="checkedUser(user.id)"
+      />
+      <label :for="user.id">
         <div
           class="
             border-2 border-primary-variant
@@ -239,6 +245,7 @@
 <script>
 export default {
   props: ["user"],
+  inject:['checkedUser'],
   data() {
     return {
       modalIsVisible: false,
@@ -300,7 +307,7 @@ export default {
 </script>
 
 <style scoped>
-#check:checked ~ label > div {
+input:checked ~ label > div {
   background: #6d5bd0;
 }
 th,

@@ -201,7 +201,7 @@
       </div>
     </div>
     <div>
-      <button class="bg-primary text-white uppercase p-2 rounded-md">
+      <button class="bg-primary text-white uppercase p-2 rounded-md" @click="$emit('userPaid')">
         pay dues
       </button>
     </div>

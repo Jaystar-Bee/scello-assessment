@@ -1,5 +1,5 @@
 <template>
-  <table-view :users="users"></table-view>
+  <table-view :users="users" ></table-view>
 </template>
 
 <script>
@@ -11,6 +11,11 @@ export default {
   computed: {
     users() {
       return this.$store.getters.users;
+    },
+  },
+  methods: {
+    checkedUser(id) {
+      console.log(id);
     },
   },
 };

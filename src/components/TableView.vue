@@ -52,6 +52,11 @@ export default {
     UserOverview,
     TheFooter,
   },
+  methods: {
+    checkedUser(id) {
+      console.log(id);
+    },
+  },
 };
 </script>
 

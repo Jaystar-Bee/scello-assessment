@@ -8,7 +8,10 @@
     </header>
     <div class="card rounded-lg container mx-auto">
       <div>
-        <filter-bar class="border-b border-body-color"></filter-bar>
+        <filter-bar
+          class="border-b border-body-color"
+          @userPaid="userPaid"
+        ></filter-bar>
         <component :is="activeComponent"></component>
       </div>
     </div>
@@ -27,6 +30,7 @@ export default {
   data() {
     return {
       activeComponent: "all-user",
+      userToChange: null,
     };
   },
   components: {
@@ -42,6 +46,22 @@ export default {
     changeComponent(comp) {
       this.activeComponent = comp;
     },
+    async userPaid() {
+      try {
+        this.$store.dispatch("userHasPaid", this.userToChange);
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    checkedUser(id) {
+      console.log(id);
+      this.userToChange = id;
+    },
+  },
+  provide() {
+    return {
+      checkedUser: this.checkedUser,
+    };
   },
 };
 </script>

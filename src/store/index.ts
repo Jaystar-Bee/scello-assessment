@@ -145,6 +145,15 @@ export default createStore({
         });
       }
     },
+    async userHasPaid(context, userId) {
+      try {
+        await axios.patch(`mark-paid/${userId}`);
+        alert("User altered to paid successfully!");
+        context.dispatch("getUsers");
+      } catch (error: any) {
+        throw Error(error.response.message || "Something went wrong");
+      }
+    },
   },
   // modules: {}
 });
